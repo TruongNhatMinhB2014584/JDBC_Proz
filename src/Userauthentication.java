@@ -12,7 +12,7 @@ public class Userauthentication {
         try {
             Connection connection = DriverManager.getConnection(jdbcURL, dbUser, dbPassword);
 
-            String sqlQuery = "SELECT * FROM account WHERE username = ?";
+            String sqlQuery = "SELECT * FROM users WHERE username = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1, username);
 
@@ -33,3 +33,6 @@ public class Userauthentication {
         return false; // Nếu không có kết quả khớp hoặc xảy ra lỗi, từ chối truy cập
     }
 }
+
+
+

@@ -1,3 +1,4 @@
+import javax.swing.*;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -140,7 +141,25 @@ public class register extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        UserReg reg = new UserReg();
+        String user = jTextField1.getText();
+        String pass = jPasswordField1.getText();
+        String repass = jPasswordField2.getText();
+        String sdt = jTextField3.getText();
+        if(pass.equals(repass) && reg.validatePhoneNumber(sdt)){
+            if (reg.authenticateReg(user, pass, sdt)) {
+                JOptionPane.showMessageDialog(register.this, "Đăng kí thành công! Giờ hãy dăng nhập", "Thông báo", JOptionPane.INFORMATION_MESSAGE);   
+                login loginForm = new login();
+                loginForm.setVisible(true);
+                dispose();
+            }    
+            else {
+                JOptionPane.showMessageDialog(register.this, "Tên tài khoản đã tồn tại!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            }
+        } 
+        else {
+                JOptionPane.showMessageDialog(register.this, "Vui lòng kiểm tra mật khẩu hoặc số điện thoại", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+            }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
