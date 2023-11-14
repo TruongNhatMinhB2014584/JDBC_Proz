@@ -146,7 +146,9 @@ public class login extends javax.swing.JFrame {
         String user = jTextField1.getText();
         String pass = jPasswordField1.getText();
          if (auth.authenticateUser(user, pass)) {
-            JOptionPane.showMessageDialog(login.this, "Đăng nhập thành công!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+             main mainForm = new main();
+             mainForm.setVisible(true);
+            dispose();
         } else {
             JOptionPane.showMessageDialog(login.this, "Đăng nhập thất bại!", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
         }
