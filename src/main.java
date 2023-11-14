@@ -408,17 +408,25 @@ public class main extends javax.swing.JFrame {
 } else if (buttonText.equals("Thêm đơn thuốc")) {
     // Lấy dữ liệu từ các JTextField cho Khoa
     String maDonThuoc = jTextField1.getText();
-    String soLuong = jTextField2.getText();
-    String gia = jTextField3.getText();
-    int maHoaDon = Integer.parseInt(jTextField4.getText());
-    double maThuoc = Double.parseDouble(jTextField5.getText());;
+    int soLuong = Integer.parseInt(jTextField2.getText());
+    double gia = Double.parseDouble(jTextField3.getText());
+    String maHoaDon = jTextField4.getText();
+    String maThuoc = jTextField5.getText();
 
+    // Create an instance of the transaction class
+    transaction trans = new transaction();
+
+    // Gọi phương thức thêm Khoa từ lớp chứa phương thức thêm vào CSDL
+    int transId = trans.createPrescription(maDonThuoc, maHoaDon, maThuoc, soLuong, gia);
+
+
+    JOptionPane.showMessageDialog(null, "Thêm đơn thuốc thành công", "Thông báo", JOptionPane.INFORMATION_MESSAGE);
 
     // Load lại dữ liệu vào bảng Khoa để cập nhật thông tin mới
-    Kmodel.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng
-    table.loadData6(Kmodel);
+    DTmodel.setRowCount(0); // Xóa dữ liệu hiện tại trong bảng
+    table.loadData3(DTmodel);
     clearTextFields();
-}   
+} 
         else if (buttonText.equals("Thêm khoa")) {
     // Lấy dữ liệu từ các JTextField cho Khoa
     String maKhoa = jTextField1.getText();
@@ -715,6 +723,7 @@ if (maTimKiem.isEmpty()) {
             BAmodel.setRowCount(0);
             table.loadData8(BAmodel);
     }
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
